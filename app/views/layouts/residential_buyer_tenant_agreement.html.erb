@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buyer/Tenant Representation Agreement between</title>
+  <%= wicked_pdf_stylesheet_link_tag "styles" %>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+  <style type="text/css">
+      body {
+          height: 100%;
+          width: 100%;
+          font-family: "Open Sans", sans-serif;
+          font-optical-sizing: auto;
+          line-height: normal;
+          margin: 0px;
+          padding: 10px;
+          font-weight: 400;
+          box-sizing: border-box;
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: subpixel-antialiased;
+          -moz-osx-font-smoothing: grayscale;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+          margin: 0;
+      }
+
+      ul,
+      li {
+          padding: 0;
+          margin: 0;
+      }
+
+      .header-logo img {
+          max-width: 234px;
+      }
+      .main-header {
+          width: 100%;
+          max-width: 640px;
+          text-align: center;
+          padding-left: 15px;
+          padding-right: 15px;
+          margin: 0 auto;
+      }
+
+      .top-header {
+          display: -webkit-box;
+            flex-direction: column;
+      }
+
+      .top-header [class*="header-"] {
+          width: 100%;
+          text-align: center;
+      }
+
+      .top-header .header-info {
+          text-align: center;
+          padding-top: 6px;
+      }
+
+      .header-subtext p {
+          font-size: 10px;
+          text-align: center;
+          margin-bottom: 4px;
+      }
+
+      .header-subtext p span {
+          font-weight: bold;
+          width: 100%;
+          display: inline-block;
+      }
+
+      .header-date p {
+          font-size: 11px;
+      }
+
+      .header-info h1 {
+          font-size: 17px;
+          margin: 0 auto 4px;
+      }
+
+      .content-outer h2 {
+          font-size: 12px;
+      }
+
+      .content-outer h2 a {
+          color: #000;
+      }
+
+      .main-outer {
+          border-top: 2px solid #434343;
+      }
+
+      .content-outer ol {
+          padding-left: 18px;
+      }
+
+      .content-outer > ol > li {
+          font-size: 14px;
+          margin-top: 6px;
+      }
+
+      .content-outer ol li::marker {
+          font-weight: bold;
+      }
+
+      .content-outer ol li strong {
+          font-weight: bold;
+      }
+
+      .content-outer ol li span {
+          border-bottom: 1px solid #696969;
+          min-width: 155px;
+          display: inline-block;
+          outline: none;
+          flex-grow: 1;
+      }
+      .parties-field {
+          margin: 8px 0px;
+      }
+      .parties-field .parties-inner {
+          padding-left: 20px;
+      }
+      .parties-field .parties-column,
+      .parties-field .parties-email {
+          width: 100%;
+          display: -webkit-box;
+          column-gap: 6px;
+          font-size: 12px;
+      }
+      .parties-field .parties-column span {
+          flex-grow: 1;
+      }
+      .list-outline {
+          position: relative;
+          padding-top: 6px;
+          padding-bottom: 6px;
+          margin-top: 8px;
+          margin-bottom: 8px;
+      }
+      .list-outline::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -22px;
+          width: calc(100% + 22px);
+          height: 100%;
+          border: 1px solid #000;
+      }
+      .content-outer input[type="checkbox"]{
+          accent-color: #000;
+      }
+      .checked-listed {
+          display: -webkit-box;
+          flex-wrap: wrap;
+          list-style: none;
+          padding: 0px;
+          margin-top: 3px;
+      }
+      .checked-listed li {
+          width: 100%;
+          max-width: 50%;
+      }
+      .checked-listed li:last-child {
+          margin-left: auto;
+      }
+      .content-outer .content-info {
+          display: -webkit-box;
+          column-gap: 10px;
+          justify-content: space-between;
+          margin-bottom: 5px;
+      }
+      .content-outer .content-info .content-box {
+          width: 100%;
+      }
+      .content-outer .content-info h5 {
+          color: #050999;
+          border-bottom: 1px solid #393939;
+      }
+      .bottom-info-inner {
+          display: -webkit-box;
+      }
+      .bottom-info-inner .bottom-info-content {
+          width: 100%;
+          max-width: 16%;
+      }
+      .bottom-info-inner .bottom-info-content:first-child {
+          max-width: none;
+      }
+      .bottom-info-inner .bottom-info-content p {
+          font-size: 10px;
+          font-weight: 600;
+      }
+      .bottom-info-inner.content-last .bottom-info-content:first-child, .bottom-info-inner.content-last .bottom-info-content:last-child {
+          max-width: 20%;
+      }
+      .bottom-info-inner.content-last .bottom-info-content {
+          max-width: none;
+      }
+      .bottom-info-inner .bottom-info-content:last-child {
+          text-align: right;
+      }
+      .content-info-inner-left {flex: 0 0 55%;display: -webkit-box;}
+      .content-info-inner-right {
+          flex: 0 0 40%;
+          display: -webkit-box;
+      }
+      ol[type="1"] li {margin-top: 9px;}
+      ol[type="1"] ul.checked-listed li { margin-top: 0; }
+      .parties-field .parties-column.span-border span { border-bottom: 1px solid #696969; min-width: 155px; display: inline-block; outline: none; }
+      .page-break { page-break-before: always; }
+      .content-outer ol.notice-content li { margin-top: 9px; }
+      ul.disclose-content li { margin-top: 0px; }
+      li.intermediary-text div label{ font-size: 13px; }
+      li.intermediary-text ul.disclose-content li { font-size: 12px; }
+      li.represent-text ol li { margin-top: 2px; font-size: 13px; }
+  </style>
+</head>
+
+<body>
+
+<div class="main-header">
+  <div class="top-header">
+    <div class="header-logo">
+      <img src="https://610weblab.in/design-link/pdf-images/texas-realtors.jpg" alt="Logo image" />
+    </div>
+    <div class="header-info">
+      <h1>RESIDENTIAL BUYER/TENANT REPRESENTATION<br>
+        AGREEMENT - SHORT FORM</h1>
+    </div>
+  </div>
+  <div class="header-subtext">
+    <p>USE OF THIS FORM BY PERSONS WHO ARE NOT MEMBERS OF THE TEXAS ASSOCIATION OF REALTORS®, INC. IS NOT
+      AUTHORIZED.
+      <span> ©Texas Association of REALTORS®, Inc. 2024</span>
+    </p>
+  </div>
+</div>
+<div class="main-outer">
+
+  <div class="content-outer">
+    <ol type="1">
+      <li><strong>PARTIES:</strong> The parties to this agreement are:
+        <div class="parties-field">
+          <div class="parties-column">
+            <p>Client:</p>
+            <span contenteditable="true"></span>
+          </div>
+          <div class="parties-inner">
+            <div class="parties-column">
+              <p>Address:</p>
+              <span></span>
+            </div>
+            <div class="parties-column">
+              <p>City, State, Zip:</p>
+              <span></span>
+            </div>
+            <div class="parties-column">
+              <p>Phone:</p>
+              <span></span>
+            </div>
+            <div class="parties-email">
+              <div class="parties-column">
+                <p>Email/Fax:</p>
+                <span></span>
+              </div>
+              <div class="parties-column">
+                <p>Email/Fax:</p>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="parties-field">
+          <div class="parties-column">
+            <p>Broker:</p>
+            <span contenteditable="true"></span>
+          </div>
+          <div class="parties-inner">
+            <div class="parties-column">
+              <p>Address:</p>
+              <span></span>
+            </div>
+            <div class="parties-column">
+              <p>City, State, Zip:</p>
+              <span></span>
+            </div>
+            <div class="parties-column">
+              <p>Phone:</p>
+              <span></span>
+            </div>
+            <div class="parties-email">
+              <div class="parties-column">
+                <p>Email/Fax:</p>
+                <span></span>
+              </div>
+              <div class="parties-column">
+                <p>Email/Fax:</p>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><strong>APPOINTMENT:</strong> Client grants Broker the exclusive right to act as Client's real estate agent for the purpose of acquiring property in the market area.</li>
+      <li><strong>DEFINITIONS:</strong>
+        <ol type="A">
+          <li><i>“Acquire”</i> means to purchase or lease.</li>
+          <li><i>“Closing”</i> in a sale transaction means the date legal title to a property is conveyed to a purchaser of property under a contract to buy. “Closing” in a lease transaction means the date a landlord and tenant enter into a binding lease of a property.</li>
+          <li><i>“Market area”</i> means that area in the State of Texas specified as follows (for example, <i>insert property address, subdivision, city, county, zip code, etc.</i>): <span></span></li>
+          <li><i>“Property”</i> means any interest in real estate including but not limited to properties listed in a multiple listing service or other listing services, properties for sale by owners, and properties for sale by builders.</li>
+        </ol>
+      </li>
+      <li><strong>TERM:</strong> This agreement begins on <span></span> and ends at 11:59 p.m. on <span></span></li>
+      <li><strong>BROKER'S OBLIGATIONS:</strong> Broker will: (a) use Broker's best efforts to assist Client in acquiring property in the market area; (b) assist Client in negotiating the acquisition of property in the market area; and (c) comply with other provisions of this agreement.</li>
+      <li><strong>CLIENT'S OBLIGATIONS:</strong> Client will: (a) work exclusively through Broker in acquiring property in the market area and negotiate the acquisition of property in the market area only through Broker; (b) inform other brokers, salespersons, sellers, and landlords with whom Client may have contact that Broker exclusively represents Client for the purpose of acquiring property in the market area and refer all such persons to Broker; and (c) comply with other provisions of this agreement.</li>
+
+      <div class="content-outer" style="margin-top: 25px;">
+        <div class="bottom-info-inner">
+          <div class="bottom-info-content">
+            <p>Coleman Team Realty, 110 Ave. H Suite 101 Marble Falls TX 78654</p>
+          </div>
+          <div class="bottom-info-content">
+            <p><span>Phone:</span> 5125920379</p>
+          </div>
+          <div class="bottom-info-content">
+            <p><span>Fax:</span> 8555253525</p>
+          </div>
+          <div class="bottom-info-content">
+            <p>Test Transaction</p>
+          </div>
+        </div>
+
+        <div class="bottom-info-inner content-last">
+          <div class="bottom-info-content">
+            <p>Trey Berry</p>
+          </div>
+          <div class="bottom-info-content">
+            <p><span>Produced with Lone Wolf Transactions (zipForm Edition) 717 N Harwood St, Suite 2200, Dallas, TX 75201</span></p>
+          </div>
+          <div class="bottom-info-content">
+            <p> <a href="javascript:;" target="_blank" style="color: #000;">https://www.lwolf.com/</a> </p>
+          </div>
+        </div>
+      </div>
+      <div class="page-break"></div>
+      <div class="parties-field">
+        <div class="parties-column span-border">
+          <p>Buyer/Tenant Representation Agreement between</p>
+          <span></span>
+        </div>
+      </div>
+      <li><strong>BROKER COMPENSATION:</strong> <br> <strong>Broker compensation or the sharing of compensation between brokers is not set by law nor fixed, controlled, recommended, or suggested, by the Association of REALTORS®, MLS, or any listing service. Broker compensation is fully negotiable. Brokers independently determine their fees. Broker is prohibited from receiving compensation for brokerage services from any source that exceeds the amounts stated in this agreement.</strong>
+        <ol class="broker-list" type="A">
+          <li class="list-outline"><strong><u>Broker's Fee:</u> When Earned and Payable, Client will pay Broker <i>(Complete all that apply):</i></strong> <br /> <strong>(1) (Purchases) <span></span> % of the sales price or a flat fee of $ <span></span> .</strong> <br /> <strong>(2) (Leases) <span></span> % of one month's rent <u>or</u> <span></span> % of all rents to be paid over the term of the lease <u>or</u> a flat fee of $ <span></span> .</strong></li>
+          <li><u>Source of Compensation:</u> Broker will seek to obtain payment of the fees specified in Paragraph 7A first from the seller, landlord, or their agents. <u><strong>If such persons refuse or fail to pay Broker the amount specified, Client will pay Broker the amount specified less any amounts Broker receives from such persons.</strong></u></li>
+          <li><u>Earned and Payable:</u> Broker's compensation is Earned when: (1) Client enters into a contract to buy or lease property in the market area; or (2) Client breaches this agreement. Broker's compensation is Payable, either during the term of this agreement or after it ends, upon the earlier of: (1) the closing of the transaction to acquire the property; (2) Client's breach of a contract to buy or lease a property in the market area; or (3) Client's breach of this agreement. If Client acquires more than one property under this agreement, Broker's compensation for each property acquired are Earned as each property is acquired and are Payable at the closing of each acquisition.</li>
+          <li><u>Acquisition of Broker's Listing (Intermediary Transactions):</u> If Client acquires a property listed by Broker, any compensation Broker offers to other brokers in Broker's listing agreement with the owner will be credited towards Broker's Fee specified under Paragraph 7A.</li>
+          <li><u>Additional Compensation:</u> In addition to Broker's Fee specified under Paragraph 7A, Broker is entitled to the following compensation. <br /> (1) <u>Construction:</u> If Client uses Broker's services to procure or negotiate the construction of improvements to property that Client owns or may acquire, Client ensures that Broker will receive from Client or the contractor(s) at the time the construction is substantially complete a fee equal to: <span></span> . <br /> (2) <u>Service Providers:</u> If Broker refers Client or any party to a transaction contemplated by this agreement to a service provider (for example, mover, cable company, telecommunications provider, utility, or contractor) Broker may receive a fee from the service provider for the referral <br /> <u>(3) Other Compensation <i>(Only insert amounts or rates of compensation that are objectively ascertainable and the specific amount or rate is known at the time of execution. Do not insert bonuses, a range of compensation, or terms such as “TBD”.)</i>:</u> <span></span> <br> <p><strong>Notice Regarding Bonuses.</strong> In addition to Broker's Fee specified under Paragraph 7A, seller, landlord, or their agent may offer to pay Broker a bonus if Client purchases or leases certain properties. Broker will disclose the specific amount of any bonus offered to Broker. Broker may not receive any bonus unless authorized by Client in writing. Client authorization may be made by amending this agreement (use TXR 1505).</p></li>
+
+          <div class="content-outer" style="margin-top: 25px;">
+            <div class="bottom-info-inner">
+              <div class="bottom-info-content">
+                <p>Coleman Team Realty, 110 Ave. H Suite 101 Marble Falls TX 78654</p>
+              </div>
+              <div class="bottom-info-content">
+                <p><span>Phone:</span> 5125920379</p>
+              </div>
+              <div class="bottom-info-content">
+                <p><span>Fax:</span> 8555253525</p>
+              </div>
+              <div class="bottom-info-content">
+                <p>Test Transaction</p>
+              </div>
+            </div>
+
+            <div class="bottom-info-inner content-last">
+              <div class="bottom-info-content">
+                <p>Trey Berry</p>
+              </div>
+              <div class="bottom-info-content">
+                <p><span>Produced with Lone Wolf Transactions (zipForm Edition) 717 N Harwood St, Suite 2200, Dallas, TX 75201</span></p>
+              </div>
+              <div class="bottom-info-content">
+                <p> <a href="javascript:;" target="_blank" style="color: #000;">https://www.lwolf.com/</a> </p>
+              </div>
+            </div>
+          </div>
+          <div class="page-break"></div>
+          <div class="parties-field">
+            <div class="parties-column span-border">
+              <p>Buyer/Tenant Representation Agreement between</p>
+              <span></span>
+            </div>
+          </div>
+
+          <li><u>Protection Period:</u> “Protection period” means that time starting the day after this agreement ends and continuing for <span></span> days. Not later than 10 days after this agreement ends, Broker may send Client written notice identifying the properties called to Client's attention during this agreement. If Client or a relative of Client agrees to acquire a property identified in the notice during the protection period, Client will pay Broker, upon closing, the amount Broker would have been entitled to receive if this agreement were still in effect. This Paragraph 7F survives termination of this agreement. This Paragraph 7F will not apply if Client is, during the protection period, bound under a representation agreement with another broker who is a member of Texas REALTORS® at the time the acquisition is negotiated and the other broker is paid a fee for negotiating the transaction.</li>
+          <li><u>Escrow Authorization:</u> Client authorizes, and Broker may so instruct, any escrow or closing agent authorized to close a transaction for the acquisition of property contemplated by this agreement to collect and disburse to Broker all amounts Payable to Broker.</li>
+          <li><u>County:</u> Amounts Payable to Broker are to be paid in cash in <span></span> County, Texas.</li>
+        </ol>
+      </li>
+      <li class="represent-text"><strong>REPRESENTATIONS:</strong> <br>
+        <ol type="A">
+          <li>Each person signing this agreement represents that the person has the legal capacity and authority to bind the respective party to this agreement.</li>
+          <li>Client represents that Client is not now a party to another buyer or tenant representation agreement with another broker for the acquisition of property in the market area.</li>
+          <li>Client represents that all information relating to Client's ability to acquire property in the market area Client gives to Broker is true and correct.</li>
+          <li>Name any employer, relocation company, or other entity that will provide benefits to Client when acquiring property in the market area: <span></span></li>
+          <li>Broker is not authorized to execute any document in the name of or on behalf of Client concerning the Property.</li>
+        </ol>
+      </li>
+      <li class="intermediary-text"><strong>INTERMEDIARY:</strong> (Check A or B only.) <br />
+        <div>
+          <div>
+            <input type="checkbox" id="Intermediary" name="Intermediary-Status" value="Intermediary">
+            <label for="Intermediary">A. <u>Intermediary Status:</u> Client desires to see Broker's listings. If Client wishes to acquire one of Broker's listings, Client authorizes Broker to act as an intermediary and Broker will notify Client that Broker will service the parties in accordance with one of the following alternatives.
+              <div style="padding-left: 28px;">
+                <p>(1) If the owner of the property is serviced by an associate other than the associate servicing Client under this agreement, Broker may notify Client that Broker will: (a) appoint the associate then servicing the owner to communicate with, carry out instructions of, and provide opinions and advice during negotiations to the owner; and (b) appoint the associate then servicing Client to the Client for the same purpose.</p>
+                <p>(2) If the owner of the property is serviced by the same associate who is servicing Client, Broker may notify Client that Broker will: (a) appoint another associate to communicate with, carry out instructions of, and provide opinions and advice during negotiations to Client; and (b) appoint the associate servicing the owner under the listing to the owner for the same purpose.</p>
+                <p>(3) Broker may notify Client that Broker will make no appointments as described under this Paragraph 9A and, in such an event, the associate servicing the parties will act solely as Broker's intermediary representative, who may facilitate the transaction but will not render opinions or advice during negotiations to either party.</p>
+              </div>
+            </label>
+          </div>
+          <div>
+            <input type="checkbox" id="No-Intermediary" name="Intermediary-Status" value="No-Intermediary">
+            <label for="No-Intermediary">B. <u>No Intermediary Status:</u> Client does not wish to be shown or acquire any of Broker's listings</label>
+          </div>
+        </div>
+        <p style="margin-top: 8px;"><strong>Notice: If Broker acts as an intermediary under Paragraph 9A, Broker and Broker's associates:</strong></p>
+        <ul style="padding-left: 70px; margin-top: 3px; font-weight: 700;" class="disclose-content">
+          <li>may not disclose to Client that the seller or landlord will accept a price less than the asking price unless otherwise instructed in a separate writing by the seller or landlord;</li>
+          <li>may not disclose to the seller or landlord that Client will pay a price greater than the price submitted in a written offer to the seller or landlord unless otherwise instructed in a separate writing by Client;</li>
+
+          <div class="content-outer" style="margin-top: 25px;">
+            <div class="bottom-info-inner">
+              <div class="bottom-info-content">
+                <p>Coleman Team Realty, 110 Ave. H Suite 101 Marble Falls TX 78654</p>
+              </div>
+              <div class="bottom-info-content">
+                <p><span>Phone:</span> 5125920379</p>
+              </div>
+              <div class="bottom-info-content">
+                <p><span>Fax:</span> 8555253525</p>
+              </div>
+              <div class="bottom-info-content">
+                <p>Test Transaction</p>
+              </div>
+            </div>
+
+            <div class="bottom-info-inner content-last">
+              <div class="bottom-info-content">
+                <p>Trey Berry</p>
+              </div>
+              <div class="bottom-info-content">
+                <p><span>Produced with Lone Wolf Transactions (zipForm Edition) 717 N Harwood St, Suite 2200, Dallas, TX
+                                            75201</span></p>
+              </div>
+              <div class="bottom-info-content">
+                <p> <a href="javascript:;" target="_blank" style="color: #000;">https://www.lwolf.com/</a> </p>
+              </div>
+            </div>
+          </div>
+          <div class="page-break"></div>
+
+          <div class="parties-field">
+            <div class="parties-column span-border">
+              <p>Buyer/Tenant Representation Agreement between</p>
+              <span></span>
+            </div>
+          </div>
+
+          <li>may not disclose any confidential information or any information a seller or landlord or Client specifically instructs Broker in writing not to disclose unless otherwise instructed in a separate writing by the respective party or required to disclose the information by the Real Estate License Act or a court order or if the information materially relates to the condition of the property;</li>
+          <li>shall treat all parties to the transaction honestly; and</li>
+          <li>shall comply with the Real Estate License Act.</li>
+        </ul>
+      </li>
+      <li><strong>COMPETING CLIENTS:</strong> Client acknowledges that Broker may represent other prospective buyers or tenants who may seek to acquire properties that may be of interest to Client. Client agrees that Broker may, during the term of this agreement and after it ends, represent such other prospects, show the other prospects the same properties that Broker shows to Client, and act as a real estate broker for such other prospects in negotiating the acquisition of properties that Client may seek to acquire.</li>
+      <li><strong>CONFIDENTIAL INFORMATION:</strong> <br />
+        <ol type="A">
+          <li>During the term of this agreement or after its termination, Broker may not knowingly disclose information obtained in confidence from Client except as authorized by Client or required by law. Broker may not disclose to Client any information obtained in confidence regarding any other person Broker represents or may have represented except as required by law.</li>
+          <li>Unless otherwise agreed or required by law, a seller or the seller's agent is not obliged to keep the existence of an offer or its terms confidential. If a listing agent receives multiple offers, the listing agent is obliged to treat the competing buyers fairly.</li>
+        </ol>
+      </li>
+      <li><strong>MEDIATION:</strong> The parties agree to negotiate in good faith in an effort to resolve any dispute that may arise related to this agreement or any transaction related to or contemplated by this agreement. If the dispute cannot be resolved by negotiation, the parties will submit the dispute to mediation before resorting to arbitration or litigation and will equally share the costs of a mutually acceptable mediator. </li>
+      <li><strong>DEFAULT:</strong> If either party fails to comply with this agreement or makes a false representation in this agreement, the non-complying party is in default. If Client is in default, Broker may terminate this agreement and Client will be liable for the amount of compensation that Broker would have received under this agreement if Client was not in default; Broker may also terminate this agreement and exercise any other remedy at law. If Broker is in default, Client may exercise any remedy at law.</li>
+      <li><strong>ATTORNEY'S FEES:</strong> If Client or Broker is a prevailing party in any legal proceeding brought as a result of a dispute under this agreement or any transaction related to this agreement, such party will be entitled to recover from the non-prevailing party all costs of such proceeding and reasonable attorney's fees.</li>
+      <li><strong>LIMITATION OF LIABILITY: Neither Broker nor any other broker, or their associates, is responsible or liable for any person's personal injuries or for any loss or damage to any person's property that is not caused by Broker. Client will hold broker, any other broker, and their associates, harmless from any such injuries or losses. Client will indemnify Broker against any claims for injury or damage that Client may cause to others or their property.</strong></li>
+      <li><strong>ADDENDA:</strong> Addenda and other related documents which are part of this agreement are: <br />
+        <ul class="checked-listed">
+          <li>
+            <input type="checkbox" id="Brokerage" name="Addenda" value="Addenda">
+            <label for="Brokerage"> Information About Brokerage Services</label>
+          </li>
+          <li>
+            <input type="checkbox" id="Protect" name="Addenda" value="Addenda">
+            <label for="Protect"> Protect Your Family from Lead in Your Home</label>
+          </li>
+          <li>
+            <input type="checkbox" id="Remediation" name="Addenda" value="Addenda">
+            <label for="Remediation"> Mold Remediation Consumer Protection</label>
+          </li>
+          <li>
+            <input type="checkbox" id="Hazard" name="Addenda" value="Addenda">
+            <label for="Hazard"> Information about Special Flood Hazard Areas</label>
+          </li>
+          <li>
+            <input type="checkbox" id="Concerning" name="Addenda" value="Addenda">
+            <label for="Concerning"> Information Concerning Property Insurance</label>
+          </li>
+          <li>
+            <input type="checkbox" id="Protection" name="Addenda" value="Addenda">
+            <label for="Protection"> For Your Protection: Get a Home Inspection</label>
+          </li>
+          <li>
+            <input type="checkbox" id="General" name="Addenda" value="Addenda">
+            <label for="General"> General Information and Notice to Buyers and Sellers</label>
+          </li>
+          <li>
+            <input type="checkbox" id="Fraud" name="Addenda" value="Addenda">
+            <label for="Fraud"> Wire Fraud Warning</label>
+          </li>
+          <li>
+            <input type="checkbox" id="Sellers" name="Addenda" value="Addenda">
+            <label for="Sellers"> <span></span></label>
+          </li>
+        </ul>
+      </li>
+      <div class="content-outer" style="margin-top: 25px;">
+        <div class="bottom-info-inner">
+          <div class="bottom-info-content">
+            <p>Coleman Team Realty, 110 Ave. H Suite 101 Marble Falls TX 78654</p>
+          </div>
+          <div class="bottom-info-content">
+            <p><span>Phone:</span> 5125920379</p>
+          </div>
+          <div class="bottom-info-content">
+            <p><span>Fax:</span> 8555253525</p>
+          </div>
+          <div class="bottom-info-content">
+            <p>Test Transaction</p>
+          </div>
+        </div>
+
+        <div class="bottom-info-inner content-last">
+          <div class="bottom-info-content">
+            <p>Trey Berry</p>
+          </div>
+          <div class="bottom-info-content">
+            <p><span>Produced with Lone Wolf Transactions (zipForm Edition) 717 N Harwood St, Suite 2200, Dallas, TX
+                                    75201</span></p>
+          </div>
+          <div class="bottom-info-content">
+            <p> <a href="javascript:;" target="_blank" style="color: #000;">https://www.lwolf.com/</a> </p>
+          </div>
+        </div>
+      </div>
+      <div class="page-break"></div>
+      <div class="parties-field">
+        <div class="parties-column span-border">
+          <p>Buyer/Tenant Representation Agreement between</p>
+          <span></span>
+        </div>
+      </div>
+      <li><strong>SPECIAL PROVISIONS:</strong></li>
+      <li><strong>ADDITIONAL NOTICES:</strong>
+        <ol type="A" class="notice-content">
+          <li><strong>In accordance with fair housing laws and the National Association of REALTORS® Code of Ethics, Broker's services must be provided without regard to race, color, religion, national origin, sex, disability, familial status, sexual orientation, or gender identity. Local ordinances may provide for additional protected classes (for example, creed, status as a student, marital status, or age).</strong></li>
+          <li><strong>Broker is not a property inspector, pest inspector, appraiser, surveyor, engineer, environmental assessor, or compliance inspector. Client should seek experts to render such services in any acquisition.</strong></li>
+          <li><strong>If Client purchases property, Client should have an abstract covering the property examined by an attorney of Client's selection, or Client should be furnished with or obtain a title policy.</strong></li>
+          <li><strong>Client may purchase a residential service contract. Client should review such service contract or the scope of coverage, exclusions, and limitations. The purchase of a residential service contract is optional. There are several residential service companies operating in Texas.</strong></li>
+          <li><strong>When viewing a property, Client might be recorded or otherwise monitored without Client's knowledge or consent. Additionally, consult an attorney before recording or photographing a property without Owner's knowledge or consent.</strong></li>
+          <li><strong>To reduce risk of wire fraud, Client should refrain from transmitting personal information, such as bank account or other financial information, via unsecured email or other electronic communication. If Client receives any request to wire funds, even if the communication appears to come from a legitimate source, Client should verify its authenticity <u>prior to transferring any funds</u>. Verification should be made in person or via phone call using a recognized phone number not found in the communication. Broker will not send Client any electronic communication with instructions to wire funds or to provide personal information.</strong></li>
+        </ol>
+        <p style="margin: 8px 0px 25px;"><strong>CONSULT AN ATTORNEY: Broker cannot give legal advice. This is a legally binding agreement. READ IT CAREFULLY. If you do not understand the effect of this agreement, consult your attorney BEFORE signing.</strong></p>
+
+      </li>
+    </ol>
+  </div>
+  <div class="content-outer">
+    <div class="content-info">
+      <div class="content-info-inner-left">
+        <div class="content-box">
+          <h5>Inset text Here</h5>
+          <p>Broker's Printed Name</p>
+        </div>
+        <div class="content-box small-box">
+          <h5>Inset text Here</h5>
+          <p>License No.</p>
+        </div>
+      </div>
+      <div class="content-info-inner-right">
+        <div class="content-box">
+          <h5>Inset text Here</h5>
+          <p>Client's Printed Name</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <div class="content-info-inner-left">
+        <div class="content-box">
+          <h5>Inset text Here</h5>
+          <p><input type="checkbox"> Broker's Signature</p>
+          <p><input type="checkbox"> Broker's Associate's Signature </p>
+
+        </div>
+        <div class="content-box small-box right-date">
+          <h5>Inset text Here</h5>
+          <p>Date</p>
+        </div>
+      </div>
+      <div class="content-info-inner-right">
+        <div class="content-box">
+          <h5>Inset text Here</h5>
+          <p>Client's Printed Name</p>
+        </div>
+        <div class="content-box right-date">
+          <h5>Inset text Here</h5>
+          <p>Date</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <div class="content-info-inner-left">
+        <div class="content-box">
+          <h5>Inset text Here</h5>
+          <p>Broker's Associate's Name, if applicable</p>
+        </div>
+        <div class="content-box small-box">
+          <h5>Inset text Here</h5>
+          <p>License No.</p>
+        </div>
+      </div>
+      <div class="content-info-inner-right">
+        <div class="content-box">
+          <h5>Inset text Here</h5>
+          <p>Client's Printed Name</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <div class="content-info-inner-left">
+        <div class="content-box"></div>
+      </div>
+      <div class="content-info-inner-right">
+        <div class="content-box small-box">
+          <h5>Inset text Here</h5>
+          <p>Client's Signature</p>
+        </div>
+        <div class="content-box right-date">
+          <h5>Inset text Here</h5>
+          <p>Date</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-outer" style="margin-top: 36px;">
+    <div class="bottom-info-inner">
+      <div class="bottom-info-content">
+        <p>Coleman Team Realty, 110 Ave. H Suite 101 Marble Falls TX 78654</p>
+      </div>
+      <div class="bottom-info-content">
+        <p><span>Phone:</span> 5125920379</p>
+      </div>
+      <div class="bottom-info-content">
+        <p><span>Fax:</span> 8555253525</p>
+      </div>
+      <div class="bottom-info-content">
+        <p>Test Transaction</p>
+      </div>
+    </div>
+
+    <div class="bottom-info-inner content-last">
+      <div class="bottom-info-content">
+        <p>Trey Berry</p>
+      </div>
+      <div class="bottom-info-content">
+        <p><span>Produced with Lone Wolf Transactions (zipForm Edition) 717 N Harwood St, Suite 2200, Dallas, TX 75201</span></p>
+      </div>
+      <div class="bottom-info-content">
+        <p> <a href="javascript:;" target="_blank" style="color: #000;">https://www.lwolf.com/</a> </p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
