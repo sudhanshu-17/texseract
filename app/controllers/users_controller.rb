@@ -21,16 +21,22 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    pdf_html = ActionController::Base.new.render_to_string(
+      template: 'layouts/long-pdf',
+      layout: false,
+      locals: {}
+    )
+    pdf = WickedPdf.new.pdf_from_string(pdf_html)
+    file_path = Rails.root.join('public', 'output.pdf')
+
+    File.open(file_path, 'wb') do |file|
+      file.write(pdf)
+    end
+
+    @user = User.new
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @user, notice: 'PDF was successfully created.' }
     end
   end
 
@@ -38,7 +44,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +58,19 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_path, status: :see_other, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_path, status: :see_other, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:email, :password, :username)
-    end
+  def user_params
+    params.require(:user).permit(:email, :password, :username)
+  end
 end
